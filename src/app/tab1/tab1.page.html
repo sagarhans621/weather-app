@@ -1,0 +1,64 @@
+<ion-header [translucent]="true" >
+  <ion-toolbar color="primary">
+    <ion-title mode="ios">
+      Weather
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content style="--background-color:red;">
+  
+  <div class="input-bar">
+    <ion-input label="Place" label-placement="floating" fill="outline" #searchPlace (input)="setSearchPlace(searchPlace.value)"></ion-input>
+    <ion-button color="warning" (click)="getPlaceWeather()" ><ion-icon name="search-outline"></ion-icon></ion-button>
+  </div>
+  <div class="time temperature">
+    {{hours}}:{{min}}
+  </div>
+  <div>
+    <div class="location">{{weather?.name}}, {{weather?.sys?.country}}</div>
+  </div>
+  <div class="weather-container">
+    <!-- Days Icons -->
+    <ion-icon *ngIf="weather?.weather[0]?.icon == '01d' " class="weather-icon" name="sunny-outline"></ion-icon>
+    <ion-icon *ngIf="weather?.weather[0]?.icon == '02d' " class="weather-icon" name="partly-sunny-outline"></ion-icon>
+    <ion-icon *ngIf=" weather?.weather[0]?.icon == '03d' " class="weather-icon" name="cloud-outline"></ion-icon>
+    <ion-icon *ngIf="weather?.weather[0]?.icon == '04d' " class="weather-icon" name="cloud-outline"></ion-icon>
+    <ion-icon *ngIf="weather?.weather[0]?.icon == '09d' " class="weather-icon" name="rainy-outline"></ion-icon>
+    <ion-icon *ngIf="weather?.weather[0]?.icon == '10d' " class="weather-icon" name="rainy-outline"></ion-icon>
+    <ion-icon *ngIf="weather?.weather[0]?.icon == '11d' || weather?.weather[0]?.icon == '11n'" class="weather-icon" name="thunderstorm-outline"></ion-icon>
+    <ion-icon *ngIf="weather?.weather[0]?.icon == '13d' || weather?.weather[0]?.icon == '13n'" class="weather-icon" name="snow-outline"></ion-icon>
+    <ion-icon *ngIf="weather?.weather[0]?.icon == '50d' || weather?.weather[0]?.icon == '50n'" class="weather-icon" name="cloud-offline-outline"></ion-icon>
+    
+
+    <!-- Night Icons -->
+    <ion-icon *ngIf="weather?.weather[0]?.icon == '01n' " class="weather-icon" name="moon-outline"></ion-icon>
+    <ion-icon *ngIf="weather?.weather[0]?.icon == '02n' " class="weather-icon" name="cloudy-night-outline"></ion-icon>
+    <ion-icon *ngIf="weather?.weather[0]?.icon == '03n' " class="weather-icon" name="cloud-outline"></ion-icon>
+    <ion-icon *ngIf="weather?.weather[0]?.icon == '04n' " class="weather-icon" name="cloud-outline"></ion-icon>
+    <ion-icon *ngIf="weather?.weather[0]?.icon == '09n' " class="weather-icon" name="cloud-outline"></ion-icon>
+    <ion-icon *ngIf="weather?.weather[0]?.icon == '09n' " class="weather-icon" name="rainy-outline"></ion-icon>
+    <ion-icon *ngIf="weather?.weather[0]?.icon == '10n' " class="weather-icon" name="rainy-outline"></ion-icon>
+    
+    
+    <p style="margin-top: 0.5rem; opacity: 0.8; margin-bottom: 0px;">{{weather?.weather[0]?.description}}</p>
+  
+    <div class="temperature">{{weather?.main?.temp}}°C</div>
+    <div class="feels-like">Feels Like {{weather?.main?.feels_like}}°C</div>
+    <div class="description">
+      <!-- <p>Humidity - <span>{{weather?.main?.humidity}}</span></p> -->
+
+      <div class="sun-set-rise">
+        <img  src="../../assets/icon/sunrise.svg" alt="">
+        <p>{{sunrise}}</p>
+      </div>
+      <div class="sun-set-rise">
+        <img  src="../../assets/icon/sunset.svg" alt="">
+        <p>{{sunset}}</p>
+      </div>
+
+    </div>
+  </div>
+
+  
+</ion-content>

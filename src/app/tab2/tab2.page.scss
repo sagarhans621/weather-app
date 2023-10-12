@@ -1,0 +1,22 @@
+.location {
+    font-size: 24px;
+    text-align: center;
+    padding: 15px;
+    // margin-top: 2.5rem;
+  }
+
+  .input-bar{
+    margin-top: 1rem;
+    display: flex;
+    justify-content: space-around;
+
+    ion-input{
+      --border-radius:10px;
+      width: 70vw;
+    }
+
+    ion-button{
+      --border-radius:10px;
+      margin: 0; width: 20vw;
+    }
+  }
